@@ -24,9 +24,7 @@ sry1 <- aggregate(df$steps,list(df$date),sum)
 names(sry1) <- c("date","steps")
 
 sry1 <- na.omit(sry1)
-g <- ggplot(sry1,aes(date,steps)) + labs(title="Number of Steps Per Day(ignore NAs)") 
-g <- g + geom_histogram(stat="identity") + labs(x="Date") + labs(y="Steps")
-print(g)
+qplot(steps, data=sry1, geom="histogram", binwidth =1000)
 ```
 
 ![plot of chunk Summary1](figure/Summary1.png) 
@@ -82,10 +80,7 @@ for (i in which(is.na(df))) {
 ```r
 sry3 <- aggregate(df2$steps,list(df2$date),sum)
 names(sry3) <- c("date","steps")
-
-g <- ggplot(sry3,aes(date,steps)) + labs(title="Number of Steps Per Day(filled NAs)")
-g <- g + geom_histogram(stat="identity") + labs(x="Date") + labs(y="Steps")
-print(g)
+qplot(steps, data=sry3, geom="histogram", binwidth = 1000)
 ```
 
 ![plot of chunk Summary3](figure/Summary3.png) 
